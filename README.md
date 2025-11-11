@@ -55,6 +55,16 @@ result = run_sma_crossover_backtest(df, SMAParameters(fast_window=20, slow_windo
 print(f"Total return: {result.total_return:.2%}, max drawdown: {result.max_drawdown:.2%}")
 ```
 
+## Makefile shortcuts
+
+```bash
+make setup        # to create venv and install project in editable mode
+make fetch-data   # to run the CLI to refresh Volatility 25 hourly candles
+make lint         # for ruff check
+make test         # the main pytest
+make notebook     # and to launch Jupyter Lab inside the project venv
+```
+
 ## Repo Directory Layout
 
 - `src/` – package source code.
