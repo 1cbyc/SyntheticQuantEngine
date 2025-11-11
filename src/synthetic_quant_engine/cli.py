@@ -29,7 +29,13 @@ def parse_args() -> argparse.Namespace:
 
     fetch_parser = subparsers.add_parser(
         "fetch-data",
-        help="Fetch Volatility 25 historical candles and persist a curated CSV.",
+        help="Fetch Deriv synthetic index candles and persist a curated CSV.",
+    )
+    fetch_parser.add_argument(
+        "--symbol",
+        type=str,
+        default="R_25",
+        help="Deriv instrument symbol, e.g. R_25 or R_50 (default: R_25).",
     )
     fetch_parser.add_argument(
         "--count",
@@ -46,8 +52,8 @@ def parse_args() -> argparse.Namespace:
     fetch_parser.add_argument(
         "--output",
         type=Path,
-        default=Path("data/raw/vol25_1h.csv"),
-        help="Destination CSV path.",
+        default=None,
+        help="Optional destination CSV path (defaults to data/raw/<symbol>_<interval>.csv).",
     )
 
     return parser.parse_args()
@@ -58,15 +64,18 @@ def main() -> None:
 
     if args.command == "fetch-data":
         config = FetchConfiguration(
+            symbol=args.symbol,
             count=args.count,
             granularity=args.granularity,
             output_path=args.output,
         )
+        output_path = config.derived_output_path().resolve()
         LOGGER.info(
-            "Fetching %s candles with granularity %ss -> %s",
+            "Fetching %s candles for %s at granularity %ss -> %s",
             config.count,
+            config.symbol,
             config.granularity,
-            config.output_path,
+            output_path,
         )
 
         asyncio.run(fetch_volatility25_candles(config))
