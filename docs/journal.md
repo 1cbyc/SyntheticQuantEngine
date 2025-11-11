@@ -38,6 +38,11 @@
 - Added pytest coverage for signal generation, configuration validation, and risk stats.
 - Documented usage in `docs/backtesting.md` and surfaced quick-start snippet in the README.
 
+## 2025-11-11 – Repo automation helpers
+
+- Added `Makefile` with shortcuts for setup, lint, test, data fetch, and notebooks.
+- Updated README to surface common commands for local development.
+
 
 
 
