@@ -26,6 +26,12 @@
 - Added helper slug logic and Pydantic model tests to guard schema changes.
 - Extended the CLI interface (`--symbol`, smart defaults) and refreshed docs/README around the broader data workflow.
 
+## 2025-11-11 – Exploratory analytics starter
+
+- Created `notebooks/vol25_exploration.ipynb` to review recent Volatility 25 hourly candles.
+- Computed basic stats/returns, rolling volatility, and plotted price vs SMA20 for quick sanity checks.
+- Captured next research questions in the notebook to guide upcoming strategy prototypes.
+
 
 
 
