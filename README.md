@@ -11,7 +11,7 @@ SyntheticQuantEngine is a full-stack data and strategy engine focused on synthet
 ## Project Roadmap
 
 1. **Bootstrap** – establish repo hygiene, documentation, and automation.
-2. **Data Intake v0.1** – fetch Volatility 75 candles, clean them with Pandas, and persist curated datasets.
+2. **Data Intake v0.1** – fetch Volatility 25 candles, clean them with Pandas, and persist curated datasets.
 3. **Strategy Prototyping** – implement baseline indicators and exploratory notebooks.
 4. **Backtesting** – build event-driven simulations first, then optimize with vectorized pipelines.
 5. **Live Loop** – wire demo trading flows with strong logging, risk checks, and monitoring hooks.
@@ -23,10 +23,24 @@ Each stage prioritizes clarity, testing, and auditability so findings are easy t
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -e ".[dev]"
 ```
 
-> Tooling details will solidify once the packaging baseline is finalized.
+Create a `.env` file and supply your Deriv demo credentials:
+
+```
+DERIV_APP_ID=your_app_id
+# Optional if your account requires it
+# DERIV_API_TOKEN=your_api_token
+```
+
+### Fetch Volatility 25 candles
+
+Run the project CLI to pull the latest batch of candles, compute a 20-period SMA, and store the dataset under `data/raw/vol25_1h.csv`:
+
+```bash
+python -m synthetic_quant_engine.cli fetch-data --count 1000 --granularity 3600
+```
 
 ## Repo Directory Layout
 
