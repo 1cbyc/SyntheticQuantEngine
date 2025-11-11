@@ -12,6 +12,7 @@
 - Implemented async Volatility 25 fetcher using Deriv WebSocket API with Pydantic validation and SMA enrichment.
 - Introduced CLI (`python -m synthetic_quant_engine.cli fetch-data`) plus documentation for the data pipeline.
 - Ensured `data/` is tracked via `.gitkeep` while keeping raw exports ignored by default.
+- `tail data/raw/vol25_1h.csv` when I got the data
 
 ## 2025-11-11 – First live pull
 
