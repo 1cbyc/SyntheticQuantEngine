@@ -60,6 +60,7 @@ print(f"Total return: {result.total_return:.2%}, max drawdown: {result.max_drawd
 - `src/` – package source code.
 - `data/` – data artifacts (ignored by default; keep curated exports under version control if needed).
 - `docs/` – documentation, journals, and process notes.
+- `docs/backtesting.md` – overview of the event-driven backtesting engine.
 - `notebooks/` – exploratory research notebooks.
 - `tests/` – unit and integration tests.
 - `scripts/` – automation helpers (setup, linting, data pulls).
