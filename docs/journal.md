@@ -49,6 +49,12 @@
 - Added Pydantic settings, MT5 session helpers, signal bridge, paper/live executors, and polling loop skeleton.
 - Documented environment variables and workflow in `docs/live_mt5.md` and noted the preview flow in the README.
 
+## 2025-11-11 – MT5 risk + CLI pass
+
+- Brought across core risk management: daily loss/profit limits, max positions, consecutive-loss pauses, and trailing stop / TP enforcement.
+- Added CSV trade logger plus paper executor improvements so fills/PnL are auditable.
+- Created `python -m synthetic_quant_engine.live.mt5.cli` and Makefile target `make mt5-loop` for quick paper runs.
+
 
 
 
