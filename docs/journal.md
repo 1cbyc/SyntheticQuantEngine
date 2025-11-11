@@ -20,6 +20,12 @@
 - Reworked WebSocket client to use native protocol (with SSL fix + certifi) and tolerate missing synthetic volumes.
 - Successfully fetched 1,000 × 1-hour Volatility 25 candles to `data/raw/vol25_1h.csv`; inspected head/tail stats with pandas.
 
+## 2025-11-11 – Fetch generalisation + tests
+
+- Generalised the fetch pipeline to accept arbitrary symbols/granularities with automatic output naming.
+- Added helper slug logic and Pydantic model tests to guard schema changes.
+- Extended the CLI interface (`--symbol`, smart defaults) and refreshed docs/README around the broader data workflow.
+
 
 
 
