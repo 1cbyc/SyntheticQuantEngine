@@ -12,5 +12,14 @@ src/synthetic_quant_engine/backtest/__init__.py
 src/synthetic_quant_engine/backtest/event.py
 src/synthetic_quant_engine/data/__init__.py
 src/synthetic_quant_engine/data/fetch_volatility25.py
+src/synthetic_quant_engine/live/__init__.py
+src/synthetic_quant_engine/live/mt5/__init__.py
+src/synthetic_quant_engine/live/mt5/cli.py
+src/synthetic_quant_engine/live/mt5/executors.py
+src/synthetic_quant_engine/live/mt5/logger.py
+src/synthetic_quant_engine/live/mt5/runner.py
+src/synthetic_quant_engine/live/mt5/session.py
+src/synthetic_quant_engine/live/mt5/settings.py
+src/synthetic_quant_engine/live/mt5/signals.py
 tests/test_backtester.py
 tests/test_data_fetch.py
