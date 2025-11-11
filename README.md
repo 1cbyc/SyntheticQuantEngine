@@ -36,10 +36,12 @@ DERIV_APP_ID=your_app_id
 
 ### Fetch Volatility 25 candles
 
-Run the project CLI to pull the latest batch of candles, compute a 20-period SMA, and store the dataset under `data/raw/vol25_1h.csv`:
+Run the project CLI to pull the latest batch of candles, compute a 20-period SMA, and store the dataset (defaults to `data/raw/r_25_1h.csv`). Override the symbol or output path as needed:
 
 ```bash
-python -m synthetic_quant_engine.cli fetch-data --count 1000 --granularity 3600
+python -m synthetic_quant_engine.cli fetch-data --symbol R_25 --count 1000 --granularity 3600
+# e.g. fetch 5-minute Volatility 50 candles
+python -m synthetic_quant_engine.cli fetch-data --symbol R_50 --granularity 300
 ```
 
 ## Repo Directory Layout
