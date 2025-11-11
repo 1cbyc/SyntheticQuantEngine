@@ -43,6 +43,12 @@
 - I added `Makefile` with shortcuts for setup, lint, test, data fetch, and notebooks.
 - Updated README to surface common commands for local development.
 
+## 2025-11-11 – MT5 integration scaffold
+
+- Began porting the legacy MT5 bot into the package (`synthetic_quant_engine.live.mt5`).
+- Added Pydantic settings, MT5 session helpers, signal bridge, paper/live executors, and polling loop skeleton.
+- Documented environment variables and workflow in `docs/live_mt5.md` and noted the preview flow in the README.
+
 
 
 
