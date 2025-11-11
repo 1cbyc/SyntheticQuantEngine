@@ -65,12 +65,41 @@ make test         # the main pytest
 make notebook     # and to launch Jupyter Lab inside the project venv
 ```
 
+## MT5 integration (preview)
+
+The legacy `mt5-trading/` folder contains the earlier MT5 bot. We are porting that logic into the main package:
+
+- `synthetic_quant_engine.live.mt5` exposes settings, MT5 session helpers, and a polling loop that reuses the SMA crossover signals.
+- Configure credentials in `.env` (demo account shown below):
+
+```
+DERIV_MT5_LOGIN=123456789
+DERIV_MT5_PASSWORD=your_demo_password
+DERIV_MT5_SERVER=Deriv-Demo
+DERIV_MT5_SYMBOLS=Volatility 25 Index,Volatility 50 Index
+DERIV_MT5_PAPER_MODE=true
+```
+
+- Install extras: `pip install -e ".[dev,mt5]"`.
+- Launch a paper loop:
+
+```python
+from synthetic_quant_engine.live.mt5 import LiveTradingLoop, load_mt5_settings
+
+settings = load_mt5_settings()
+loop = LiveTradingLoop(settings)
+loop.run()  # polls MT5, generates SMA signals, and simulates fills
+```
+
+We’ll extend this loop to place real MT5 orders once the paper run and risk controls are validated.
+
 ## Repo Directory Layout
 
 - `src/` – package source code.
 - `data/` – data artifacts (ignored by default; keep curated exports under version control if needed).
 - `docs/` – documentation, journals, and process notes.
 - `docs/backtesting.md` – overview of the event-driven backtesting engine.
+- `docs/live_mt5.md` – MT5 integration and live-loop notes.
 - `notebooks/` – exploratory research notebooks.
 - `tests/` – unit and integration tests.
 - `scripts/` – automation helpers (setup, linting, data pulls).
