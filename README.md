@@ -44,6 +44,17 @@ python -m synthetic_quant_engine.cli fetch-data --symbol R_25 --count 1000 --gra
 python -m synthetic_quant_engine.cli fetch-data --symbol R_50 --granularity 300
 ```
 
+### Run the SMA crossover backtester (Python shell or notebook)
+
+```python
+import pandas as pd
+from synthetic_quant_engine.backtest import run_sma_crossover_backtest, SMAParameters
+
+df = pd.read_csv("data/raw/r_25_1h.csv", parse_dates=["timestamp"])
+result = run_sma_crossover_backtest(df, SMAParameters(fast_window=20, slow_window=50))
+print(f"Total return: {result.total_return:.2%}, max drawdown: {result.max_drawdown:.2%}")
+```
+
 ## Repo Directory Layout
 
 - `src/` – package source code.
