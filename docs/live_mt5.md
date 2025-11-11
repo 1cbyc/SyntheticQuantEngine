@@ -1,6 +1,6 @@
 # MT5 Live Loop (Preview)
 
-I integrrated a former project of mine that i used for multiple instruments. It initially contained a sprawling MT5 automation stack (multi-strategy bot, dashboards, risk controls). For now, I am carving out the reusable core and integrating it into `synthetic_quant_engine` so research, backtests, and live execution share the same code path.
+ I integrrated a former project of mine that i used for multiple instruments. It initially contained a sprawling MT5 automation stack (multi-strategy bot, dashboards, risk controls). For now, I am carving out the reusable core and integrating it into `synthetic_quant_engine` so research, backtests, and live execution share the same code path.
 
 ## Components
 
@@ -8,7 +8,7 @@ I integrrated a former project of mine that i used for multiple instruments. It 
 - `synthetic_quant_engine.live.mt5.session`: Context manager for MT5 terminal lifecycle (initialize, login, shutdown).
 - `synthetic_quant_engine.live.mt5.signals`: Reuses the SMA crossover logic from the backtester to generate live signals.
 - `synthetic_quant_engine.live.mt5.executors`: Paper-trade simulator plus helper to send real MT5 orders.
-- `synthetic_quant_engine.live.mt5.runner`: Polling loop that fetches candles from MT5, computes signals, runs risk checks, and either simulates or places trades.
+- `synthetic_quant_engine.live.mt5.runner`: Polling loop that fetches candles from MT5, computes signals, runs risk checks, and either simulates or places trades. It now logs trades to `logs/mt5_trades.csv`, enforces daily loss/profit limits, max positions, consecutive-loss pauses, and trailing/stop logic lifted from the legacy bot.
 
 Although i have made it so this “preview” version runs in paper mode by default; adding live execution later is a matter of switching the mode once risk controls are validated. Better safe than sorry, I am risking $200 for this actually. So i won't cry much.
 
@@ -42,6 +42,13 @@ loop = LiveTradingLoop(settings=settings)
 loop.run()  # loops forever; Ctrl+C to exit
 ```
 
+CLI helper:
+
+```
+python -m synthetic_quant_engine.live.mt5.cli --paper
+# flip to --live once testing is complete (and you're ready for real trades)
+```
+
 The loop:
 
 1. Connects to MT5 (the desktop terminal must be running and logged into the same account).
@@ -54,7 +61,7 @@ The loop:
 
 - Port additional risk controls from the legacy bot (advanced trailing stops, correlation checks).
 - Stream logs/metrics to disk or dashboards for easier monitoring.
-- Add orchestration scripts (`python -m synthetic_quant_engine.live.mt5.loop`).
+- Add orchestration scripts (`python -m synthetic_quant_engine.live.mt5.cli`) – done for paper mode, extend for live automation services.
 - Integrate advanced strategies (RSI, breakout, etc.) once they’ve been vetted by the backtester.
 - Only after exhaustively testing paper mode, toggle to live trading by setting `DERIV_MT5_PAPER_MODE=false`.
 
