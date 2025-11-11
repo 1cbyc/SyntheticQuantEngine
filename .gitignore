@@ -1,0 +1,37 @@
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Data artifacts
+data/
+!data/.gitkeep
+
+# Notebooks
+.ipynb_checkpoints/
+
+
+# 1cbyc
+auto.sh
+plans.md
