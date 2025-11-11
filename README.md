@@ -74,7 +74,6 @@ make notebook     # and to launch Jupyter Lab inside the project venv
 - `notebooks/` – exploratory research notebooks.
 - `tests/` – unit and integration tests.
 - `scripts/` – automation helpers (setup, linting, data pulls).
-- `auto.sh` – helper script to commit file changes one file at a time.
 
 ## Journaling
 
