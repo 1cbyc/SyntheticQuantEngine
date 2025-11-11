@@ -13,6 +13,12 @@
 - Introduced CLI (`python -m synthetic_quant_engine.cli fetch-data`) plus documentation for the data pipeline.
 - Ensured `data/` is tracked via `.gitkeep` while keeping raw exports ignored by default.
 
+## 2025-11-11 – First live pull
+
+- Created Deriv demo application + token and populated `.env`.
+- Reworked WebSocket client to use native protocol (with SSL fix + certifi) and tolerate missing synthetic volumes.
+- Successfully fetched 1,000 × 1-hour Volatility 25 candles to `data/raw/vol25_1h.csv`; inspected head/tail stats with pandas.
+
 
 
 
