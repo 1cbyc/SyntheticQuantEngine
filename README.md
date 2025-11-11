@@ -49,6 +49,7 @@ python -m synthetic_quant_engine.cli fetch-data --symbol R_50 --granularity 300
 - `src/` – package source code.
 - `data/` – data artifacts (ignored by default; keep curated exports under version control if needed).
 - `docs/` – documentation, journals, and process notes.
+- `notebooks/` – exploratory research notebooks.
 - `tests/` – unit and integration tests.
 - `scripts/` – automation helpers (setup, linting, data pulls).
 - `auto.sh` – helper script to commit file changes one file at a time.
