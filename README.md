@@ -117,4 +117,7 @@ We’ll extend this loop to place real MT5 orders once the paper run and risk co
 
 I would write all updates, decisions, and what I'm learnings in `docs/journal.md` so future me (or maybe possible collaborators) can replay the rationale behind each change I made.
 
+# Random
+
+Realized some of my installs failed because MetaQuotes hasn’t published a MetaTrader5 wheel for Python 3.13 (and on macOS the package is Windows-only unless I run MT5 through a Windows layer). That's one constraint I have currently, so I will buy a windows pc this afternoon.
 
