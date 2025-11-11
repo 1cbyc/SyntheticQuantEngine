@@ -1,6 +1,6 @@
 # MT5 Live Loop (Preview)
 
-The original `mt5-trading/` folder contains a sprawling MT5 automation stack (multi-strategy bot, dashboards, risk controls). We’re carving out the reusable core and integrating it into `synthetic_quant_engine` so research, backtests, and live execution share the same code path.
+I integrrated a former project of mine that i used for multiple instruments. It initially contained a sprawling MT5 automation stack (multi-strategy bot, dashboards, risk controls). For now, I am carving out the reusable core and integrating it into `synthetic_quant_engine` so research, backtests, and live execution share the same code path.
 
 ## Components
 
@@ -10,13 +10,13 @@ The original `mt5-trading/` folder contains a sprawling MT5 automation stack (mu
 - `synthetic_quant_engine.live.mt5.executors`: Paper-trade simulator plus helper to send real MT5 orders.
 - `synthetic_quant_engine.live.mt5.runner`: Polling loop that fetches candles from MT5, computes signals, runs risk checks, and either simulates or places trades.
 
-This “preview” version runs in paper mode by default; adding live execution later is a matter of switching the mode once risk controls are validated.
+Although i have made it so this “preview” version runs in paper mode by default; adding live execution later is a matter of switching the mode once risk controls are validated. Better safe than sorry, I am risking $200 for this actually. So i won't cry much.
 
 ## Environment Variables
 
 ```
 DERIV_MT5_LOGIN=123456789
-DERIV_MT5_PASSWORD=your_demo_password
+DERIV_MT5_PASSWORD=demo_password
 DERIV_MT5_SERVER=Deriv-Demo
 # Optional comma-separated list of symbols; defaults to Volatility 25 Index
 DERIV_MT5_SYMBOLS=Volatility 25 Index,Volatility 50 Index
