@@ -40,7 +40,7 @@
 
 ## 2025-11-11 – Repo automation helpers
 
-- Added `Makefile` with shortcuts for setup, lint, test, data fetch, and notebooks.
+- I added `Makefile` with shortcuts for setup, lint, test, data fetch, and notebooks.
 - Updated README to surface common commands for local development.
 
 
