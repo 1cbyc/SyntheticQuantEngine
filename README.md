@@ -63,6 +63,7 @@ make fetch-data   # to run the CLI to refresh Volatility 25 hourly candles
 make lint         # for ruff check
 make test         # the main pytest
 make notebook     # and to launch Jupyter Lab inside the project venv
+make mt5-loop     # start the MT5 paper loop (terminal must be running)
 ```
 
 ## MT5 integration (preview)
@@ -89,6 +90,14 @@ from synthetic_quant_engine.live.mt5 import LiveTradingLoop, load_mt5_settings
 settings = load_mt5_settings()
 loop = LiveTradingLoop(settings)
 loop.run()  # polls MT5, generates SMA signals, and simulates fills
+```
+
+Or, use the CLI helper (defaults to paper mode):
+
+```bash
+python -m synthetic_quant_engine.live.mt5.cli --paper
+# When ready (after thorough testing):
+# python -m synthetic_quant_engine.live.mt5.cli --live
 ```
 
 We’ll extend this loop to place real MT5 orders once the paper run and risk controls are validated.
