@@ -56,6 +56,6 @@ python -m synthetic_quant_engine.cli fetch-data --symbol R_50 --granularity 300
 
 ## Journaling
 
-Updates, decisions, and all my learnings flow into `docs/journal.md` so future me (or maybe possible collaborators) can replay the rationale behind each change I made.
+I would write all updates, decisions, and what I'm learnings in `docs/journal.md` so future me (or maybe possible collaborators) can replay the rationale behind each change I made.
 
 
