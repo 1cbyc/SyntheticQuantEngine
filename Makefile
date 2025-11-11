@@ -36,6 +36,9 @@ fetch-data:
 notebook:
 	$(ACTIVATE) && jupyter lab
 
+mt5-loop:
+	$(ACTIVATE) && $(PYTHON) -m synthetic_quant_engine.live.mt5.cli --paper
+
 clean:
 	rm -rf $(VENV_DIR) build dist *.egg-info .pytest_cache .ruff_cache
 
