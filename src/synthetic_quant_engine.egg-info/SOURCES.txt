@@ -8,5 +8,9 @@ src/synthetic_quant_engine.egg-info/SOURCES.txt
 src/synthetic_quant_engine.egg-info/dependency_links.txt
 src/synthetic_quant_engine.egg-info/requires.txt
 src/synthetic_quant_engine.egg-info/top_level.txt
+src/synthetic_quant_engine/backtest/__init__.py
+src/synthetic_quant_engine/backtest/event.py
 src/synthetic_quant_engine/data/__init__.py
 src/synthetic_quant_engine/data/fetch_volatility25.py
+tests/test_backtester.py
+tests/test_data_fetch.py
