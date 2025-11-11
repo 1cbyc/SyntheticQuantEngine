@@ -32,6 +32,12 @@
 - Computed basic stats/returns, rolling volatility, and plotted price vs SMA20 for quick sanity checks.
 - Captured next research questions in the notebook to guide upcoming strategy prototypes.
 
+## 2025-11-11 – Event-driven backtester v0.1
+
+- Implemented `EventDrivenBacktester` with SMA crossover helper + result metrics.
+- Added pytest coverage for signal generation, configuration validation, and risk stats.
+- Documented usage in `docs/backtesting.md` and surfaced quick-start snippet in the README.
+
 
 
 
