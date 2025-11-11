@@ -7,3 +7,6 @@ certifi>=2024.8.30
 [dev]
 pytest>=8.2.2
 ruff>=0.6.9
+
+[mt5]
+MetaTrader5>=5.0
