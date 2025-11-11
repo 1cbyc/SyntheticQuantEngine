@@ -40,7 +40,7 @@ def get_deriv_settings() -> DerivSettings:
         )
 
     api_token = os.getenv("DERIV_API_TOKEN")
-    endpoint = os.getenv("DERIV_API_ENDPOINT")
+    endpoint = os.getenv("DERIV_API_ENDPOINT") or "wss://ws.derivws.com/websockets/v3"
 
     try:
         app_id_int = int(app_id)
