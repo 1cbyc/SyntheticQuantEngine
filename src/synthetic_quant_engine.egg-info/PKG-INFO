@@ -10,6 +10,7 @@ Requires-Dist: pandas>=2.2.2
 Requires-Dist: websockets>=12.0
 Requires-Dist: python-dotenv>=1.0.1
 Requires-Dist: pydantic>=2.7.4
+Requires-Dist: certifi>=2024.8.30
 Provides-Extra: dev
 Requires-Dist: pytest>=8.2.2; extra == "dev"
 Requires-Dist: ruff>=0.6.9; extra == "dev"
@@ -52,10 +53,33 @@ DERIV_APP_ID=your_app_id
 
 ### Fetch Volatility 25 candles
 
-Run the project CLI to pull the latest batch of candles, compute a 20-period SMA, and store the dataset under `data/raw/vol25_1h.csv`:
+Run the project CLI to pull the latest batch of candles, compute a 20-period SMA, and store the dataset (defaults to `data/raw/r_25_1h.csv`). Override the symbol or output path as needed:
 
 ```bash
-python -m synthetic_quant_engine.cli fetch-data --count 1000 --granularity 3600
+python -m synthetic_quant_engine.cli fetch-data --symbol R_25 --count 1000 --granularity 3600
+# e.g. fetch 5-minute Volatility 50 candles
+python -m synthetic_quant_engine.cli fetch-data --symbol R_50 --granularity 300
+```
+
+### Run the SMA crossover backtester (Python shell or notebook)
+
+```python
+import pandas as pd
+from synthetic_quant_engine.backtest import run_sma_crossover_backtest, SMAParameters
+
+df = pd.read_csv("data/raw/r_25_1h.csv", parse_dates=["timestamp"])
+result = run_sma_crossover_backtest(df, SMAParameters(fast_window=20, slow_window=50))
+print(f"Total return: {result.total_return:.2%}, max drawdown: {result.max_drawdown:.2%}")
+```
+
+## Makefile shortcuts
+
+```bash
+make setup        # to create venv and install project in editable mode
+make fetch-data   # to run the CLI to refresh Volatility 25 hourly candles
+make lint         # for ruff check
+make test         # the main pytest
+make notebook     # and to launch Jupyter Lab inside the project venv
 ```
 
 ## Repo Directory Layout
@@ -63,12 +87,14 @@ python -m synthetic_quant_engine.cli fetch-data --count 1000 --granularity 3600
 - `src/` – package source code.
 - `data/` – data artifacts (ignored by default; keep curated exports under version control if needed).
 - `docs/` – documentation, journals, and process notes.
+- `docs/backtesting.md` – overview of the event-driven backtesting engine.
+- `notebooks/` – exploratory research notebooks.
 - `tests/` – unit and integration tests.
 - `scripts/` – automation helpers (setup, linting, data pulls).
 - `auto.sh` – helper script to commit file changes one file at a time.
 
 ## Journaling
 
-Updates, decisions, and all my learnings flow into `docs/journal.md` so future me (or maybe possible collaborators) can replay the rationale behind each change I made.
+I would write all updates, decisions, and what I'm learnings in `docs/journal.md` so future me (or maybe possible collaborators) can replay the rationale behind each change I made.
 
 
